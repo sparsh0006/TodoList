@@ -58,7 +58,6 @@ const TodoList: React.FC = () => {
           
           <div className="relative p-6">
             <h1 className="text-2xl font-bold mb-4 text-gray-800">To-Do List</h1>
-            
             <form onSubmit={addTask} className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -67,6 +66,7 @@ const TodoList: React.FC = () => {
                 placeholder="Add a new task..."
                 className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-black"
               />
+              <BorderBeam duration={10} size={10} />
               <button
                 type="submit"
                 className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"

@@ -1,5 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
-import { Trash2, Check, Plus, Clock } from 'lucide-react';
+import { Trash2, Check, Plus, Clock, Pencil, X } from 'lucide-react';
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Meteors } from './magicui/meteors';
 
@@ -15,6 +15,8 @@ interface Task {
 const TodoList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState<string>('');
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingText, setEditingText] = useState<string>('');
 
   const addTask = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -42,6 +44,26 @@ const TodoList: React.FC = () => {
     ));
   };
 
+  const startEditing = (task: Task): void => {
+    setEditingId(task.id);
+    setEditingText(task.text);
+  };
+
+  const cancelEditing = (): void => {
+    setEditingId(null);
+    setEditingText('');
+  };
+
+  const updateTask = (taskId: number): void => {
+    if (editingText.trim()) {
+      setTasks(tasks.map(task =>
+        task.id === taskId ? { ...task, text: editingText } : task
+      ));
+      setEditingId(null);
+      setEditingText('');
+    }
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setNewTask(e.target.value);
   };
@@ -66,7 +88,6 @@ const TodoList: React.FC = () => {
                 placeholder="Add a new task..."
                 className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-black"
               />
-              
               <button
                 type="submit"
                 className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
@@ -91,16 +112,50 @@ const TodoList: React.FC = () => {
                           >
                             <Check size={16} className="text-white" />
                           </button>
-                          <span className={`${task.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
-                            {task.text}
-                          </span>
+                          {editingId === task.id ? (
+                            <div className="flex items-center gap-2">
+                              <input
+                                type="text"
+                                value={editingText}
+                                onChange={(e) => setEditingText(e.target.value)}
+                                className="p-1 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                autoFocus
+                              />
+                              <button
+                                onClick={() => updateTask(task.id)}
+                                className="p-1 text-green-500 hover:text-green-600"
+                              >
+                                <Check size={16} />
+                              </button>
+                              <button
+                                onClick={cancelEditing}
+                                className="p-1 text-gray-500 hover:text-gray-600"
+                              >
+                                <X size={16} />
+                              </button>
+                            </div>
+                          ) : (
+                            <span className={`${task.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
+                              {task.text}
+                            </span>
+                          )}
                         </div>
-                        <button
-                          onClick={() => deleteTask(task.id)}
-                          className="p-1 text-red-500 hover:text-red-600"
-                        >
-                          <Trash2 size={16} />
-                        </button>
+                        {editingId !== task.id && (
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => startEditing(task)}
+                              className="p-1 text-blue-500 hover:text-blue-600"
+                            >
+                              <Pencil size={16} />
+                            </button>
+                            <button
+                              onClick={() => deleteTask(task.id)}
+                              className="p-1 text-red-500 hover:text-red-600"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center gap-1 ml-8 mt-1 text-sm text-gray-500">
                         <Clock size={12} />

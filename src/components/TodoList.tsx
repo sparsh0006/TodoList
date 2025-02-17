@@ -48,7 +48,7 @@ const TodoList: React.FC = () => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black overflow-hidden">
-      <Meteors number={20} />
+      <Meteors number={30} />
       <BorderBeam duration={10} size={300} />
       <div className="relative w-full max-w-md mx-4">
         <div className="relative bg-white rounded-lg shadow-md overflow-hidden">
@@ -66,7 +66,7 @@ const TodoList: React.FC = () => {
                 placeholder="Add a new task..."
                 className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-black"
               />
-              <BorderBeam duration={10} size={10} />
+              
               <button
                 type="submit"
                 className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"

@@ -3,6 +3,7 @@ import { Trash2, Check, Plus, Clock, Pencil, X } from 'lucide-react';
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Meteors } from './magicui/meteors';
 import { Particles } from './magicui/particles';
+import { HyperText } from './magicui/hyper-text';
 
 interface Task {
   id: number;
@@ -80,7 +81,7 @@ const TodoList: React.FC = () => {
           </div>
           
           <div className="relative p-6">
-            <h1 className="text-2xl font-bold mb-4 text-gray-800">To-Do List</h1>
+            <h1 className="text-2xl font-bold mb-4 text-gray-800"><HyperText>To-Do list</HyperText></h1>
             <form onSubmit={addTask} className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -177,10 +178,10 @@ const TodoList: React.FC = () => {
 
       <Particles
   className="absolute inset-0 z-0"
-  quantity={100}
+  quantity={150}
   staticity={20}  
   ease={10}       
-  color="#FFFFFF"
+  color="#FFD700"
   refresh
 />
       

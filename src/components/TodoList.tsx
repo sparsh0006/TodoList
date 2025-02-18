@@ -2,6 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { Trash2, Check, Plus, Clock, Pencil, X } from 'lucide-react';
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Meteors } from './magicui/meteors';
+import { Particles } from './magicui/particles';
 
 interface Task {
   id: number;
@@ -173,6 +174,15 @@ const TodoList: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color='#FFFFFF'
+        refresh
+      />
+      
     </div>
   );
 };

@@ -176,12 +176,13 @@ const TodoList: React.FC = () => {
       </div>
 
       <Particles
-        className="absolute inset-0 z-0"
-        quantity={100}
-        ease={80}
-        color='#FFFFFF'
-        refresh
-      />
+  className="absolute inset-0 z-0"
+  quantity={100}
+  staticity={20}  
+  ease={10}       
+  color="#FFFFFF"
+  refresh
+/>
       
     </div>
   );

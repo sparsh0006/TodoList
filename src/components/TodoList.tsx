@@ -72,6 +72,14 @@ const TodoList: React.FC = () => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black overflow-hidden">
+      <Particles
+  className="absolute inset-0 z-0"
+  quantity={100}
+  staticity={20}  
+  ease={10}       
+  color="#FFD700"
+  refresh
+/>
       <Meteors number={30} />
       <BorderBeam duration={10} size={300} />
       <div className="relative w-full max-w-md mx-4">
@@ -176,14 +184,7 @@ const TodoList: React.FC = () => {
         </div>
       </div>
 
-      <Particles
-  className="absolute inset-0 z-0"
-  quantity={150}
-  staticity={20}  
-  ease={10}       
-  color="#FFD700"
-  refresh
-/>
+      
       
     </div>
   );

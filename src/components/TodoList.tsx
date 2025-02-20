@@ -73,15 +73,21 @@ const TodoList: React.FC = () => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black overflow-hidden">
       <Particles
-  className="absolute inset-0 z-0"
-  quantity={100}
-  staticity={20}  
-  ease={10}       
-  color="#FFD700"
-  refresh
-/>
+        className="absolute inset-0 z-0"
+        quantity={100}
+        staticity={20}  
+        ease={10}       
+        color="#FFD700"
+        refresh
+      />
+
       <Meteors number={30} />
       <BorderBeam duration={10} size={300} />
+
+      {/* Hover Me button positioned in top right corner */}
+      
+      <div className="absolute top-8 right-8 z-100">
+      </div>
       <div className="relative w-full max-w-md mx-4">
         <div className="relative bg-white rounded-lg shadow-md overflow-hidden">
           <div className="absolute inset-0">
@@ -89,7 +95,10 @@ const TodoList: React.FC = () => {
           </div>
           
           <div className="relative p-6">
-            <h1 className="text-2xl font-bold mb-4 text-gray-800"><HyperText>To-Do list</HyperText></h1>
+            <h1 className="text-2xl font-bold mb-4 text-white-800">
+              <HyperText>To-Do list</HyperText>
+            </h1>
+            
             <form onSubmit={addTask} className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -183,9 +192,6 @@ const TodoList: React.FC = () => {
           </div>
         </div>
       </div>
-
-      
-      
     </div>
   );
 };

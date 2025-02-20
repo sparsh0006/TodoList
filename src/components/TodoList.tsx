@@ -4,7 +4,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import { Meteors } from './magicui/meteors';
 import { Particles } from './magicui/particles';
 import { HyperText } from './magicui/hyper-text';
-
+import { ShimmerButton } from './magicui/shimmer-button';
 interface Task {
   id: number;
   text: string;
@@ -84,9 +84,16 @@ const TodoList: React.FC = () => {
       <Meteors number={30} />
       <BorderBeam duration={10} size={300} />
 
-      {/* Hover Me button positioned in top right corner */}
       
+      {/* Hover Me button positioned in top right corner */}
       <div className="absolute top-8 right-8 z-100">
+      <ShimmerButton className="shadow-2xl">
+      <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+         Sign Up
+      </span>
+    </ShimmerButton>
+
+
       </div>
       <div className="relative w-full max-w-md mx-4">
         <div className="relative bg-white rounded-lg shadow-md overflow-hidden">
